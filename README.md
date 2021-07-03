@@ -2,7 +2,11 @@
 
 ### Angular snippets
 
-#### Prefix : !expressFunctionController
+*1. Express function controller*
+
+#### Prefix : !expFnctCon
+
+#### Table variable
 
 ``` Javascript
     /**
@@ -32,7 +36,7 @@
         if (flag) {
             throw(responseData);
         } else {
-            return responseData;",
+            return responseData;
         }
             
     }

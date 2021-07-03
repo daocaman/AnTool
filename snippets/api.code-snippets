@@ -23,7 +23,7 @@
         "description": "function controller to module"
     },
     "function controller": {
-        "prefix": "!expressFunctionController",
+        "prefix": "!expFnctCon",
         "body": [
             "",
             "/**",
