@@ -1,6 +1,6 @@
 |  STT  | Snippet | Link |
 | :---: | ------- | ---- |
-|1|Express function controller|[link](#Express function controller)|
+|1|Express function controller|[link](#*1. Express function controller*)|
 
 ### *1. Express function controller*
 
