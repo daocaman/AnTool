@@ -1,0 +1,44 @@
+{
+    "name": "antool",
+    "displayName": "AnTool",
+    "description": "generate code",
+    "version": "0.0.1",
+    "icon": "kitty.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/daocaman/antool"
+    },
+    "engines": {
+        "vscode": "^1.55.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [{
+                "language": "javascript",
+                "path": "./snippets/api.code-snippets"
+            },
+            {
+                "language": "typescript",
+                "path": "./snippets/api.code-snippets"
+            },
+            {
+                "language": "javascript",
+                "path": "./snippets/apiMongo.code-snippets"
+            },
+            {
+                "language": "typescript",
+                "path": "./snippets/angular.code-snippets"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/angular.code-snippets"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/bs4.code-snippets"
+            }
+        ]
+    }
+}

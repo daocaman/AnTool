@@ -1,0 +1,67 @@
+{
+    "mongoose db setup": {
+        "prefix": "!expMongooseConfig.js",
+        "body": [
+            "const mongoose = require('mongoose');",
+            "const dbConfig = require('./dbConfig');",
+            "var link_db = \"mongodb+srv://{username}:{password}@managecompany.wz3vd.mongodb.net/{database}?retryWrites=true&w=majority\"",
+            "link_db = link_db.replace(\"{username}\", dbConfig.user_db);",
+            "link_db = link_db.replace(\"{password}\", dbConfig.password);",
+            "link_db = link_db.replace(\"{database}\", dbConfig.database_name);",
+            "mongoose.connect(link_db)",
+            ".then(() => {",
+            "    console.log('Database connected');",
+            "})",
+            " .catch((error) => {",
+            " console.log('Error connecting to database');",
+            "});",
+        ]
+    },
+    "mongoose db model": {
+        "prefix": "!expMongModel",
+        "body": [
+            "const mongoose = require('mongoose');",
+            "",
+            "mongoose.Promise = global.Promise;",
+            "",
+            "const ${1:schemaName} = new mongoose.Schema({",
+            "    ${2:attribute}: { type: ${3|String,Date,Number,Boolean,Array|} , ${4|required:true, |} },",
+            "",
+            " }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });",
+            "",
+            "const ${5:model} = mongoose.model('user', ${1:schemaName});",
+            "",
+            "module.exports = ${5:model};"
+        ]
+    },
+    "mongoose db field":{
+        "prefix": "!expMongModelField",
+        "body": [
+            "    ${1:attribute}: { type: ${2|String,Date,Number,Boolean,Array|} , ${3|required:true, |} },",
+        ]
+    },
+
+    "mongoose db find":{
+        "prefix": "!expMongFind",
+        "body": "await ${1:MyModel}.find(${2|{}, |}, ${3|null,'attr1 attr2' |}, ${4|{ skip: 10 , limit: 10}, |}).exec();"
+    },
+
+    "mongoose db findOne":{
+        "prefix": "!expMongFindOne",
+        "body": "await ${1:MyModel}.findOne(${2|{}, |}, ${3|null,'attr1 attr2' |}).exec();"
+    },
+
+    "mongoose db findById":{
+        "prefix": "!expMongFindById",
+        "body": "await ${1:MyModel}.findById(${2:id}, ${3|null,'attr1 attr2' |}).exec();"
+    },
+
+    "mongoose db create":{
+        "prefix": "!expMongCreate",
+        "body": "await ${1:Model}.create(${2|{ },[]|});"
+    }
+
+
+
+
+}

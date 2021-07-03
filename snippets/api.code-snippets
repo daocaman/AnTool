@@ -1,0 +1,332 @@
+{
+    "new controller": {
+        "prefix": "!expressController",
+        "body": [
+            "const ${1:tb} = require(\"../models/${1:tb}\"); //${1:tb} tablename",
+            "",
+            "let nameController = \"${2:nameController}\";",
+            "",
+            "${2:nameController} = {",
+            "",
+            "};",
+            "",
+            "",
+            "module.exports = ${2:nameController}",
+        ],
+        "description": "Express Api Controller"
+    },
+    "function controller to module": {
+        "prefix": "!expressControllerVar",
+        "body": [
+            "${1:functionname}: null,"
+        ],
+        "description": "function controller to module"
+    },
+    "function controller": {
+        "prefix": "!expressFunctionController",
+        "body": [
+            "",
+            "/**",
+            "* @name ${1:function1}",
+            "* @param {${2|String,number,Date,Object|}} ${3:param1}",
+            "* @returns ${4:object}",
+            "* @description ${5:object}",
+            " */",
+            "${6:controller}.${1:function1} = async(${3:param1} = null) => {",
+            "",
+            "    console.log(\"\\x1b[34m function ${1:function1} : \\x1b[0m\" + nameController);",
+            "",
+            "    let responseData = { messages: \"\", code: 500 };",
+            "",
+            "    let flag = false;",
+            "",
+            "    try {",
+            "        $7",
+            "",
+            "    } catch (error) {",
+            "        flag = true;",
+            "        if(error.code){",
+            "            responseData.messages = error.messages ? error.messages: error;",
+            "            responseData.code = error.code ? error.code: responseData.code;",
+            "        }else{",
+            "            responseData.messages = error;",
+            "        }",
+            "    }",
+            "",
+            "    if (flag) {",
+            "        throw(responseData);",
+            "    } else {",
+            "       return responseData;",
+            "    }",
+            "",
+            "}",
+        ],
+        "description": "Api Controller function"
+    },
+    "return promise object": {
+        "prefix": "!expressReturnPromise",
+        "body": [
+            " return new Promise((resolve, reject) => {",
+            "$1",
+            "    });",
+            "",
+        ],
+        "description": "Return Promise object"
+    },
+    "return if else async":{
+        "prefix": "!expressReturn",
+        "body": [
+            "        if (flag) {",
+            "           throw(responseData);",
+            "        } else {",
+            "           return responseData;",
+            "       }",
+        ]
+    },
+    "route express": {
+        "prefix": "!expressRoute",
+        "body": [
+            "// lib",
+            "const express = require('express');",
+            "const router = express.Router();",
+            "",
+            "// controllers",
+            "const ${1:controllername} = require('../controllers/${1:controllername}');",
+            "",
+            "// middleware",
+            "",
+            "module.exports = router;"
+        ],
+        "description": "Routing in express"
+    },
+    "http method": {
+        "prefix": "!expressCRUD",
+        "body": [
+            "//${1:decription}",
+            "router.${2|get,post,put,delete|}('${3:path}', ((req, res, next) => {",
+            "console.log('\\x1b[44m====== ~ ${3:path} api ~ ===================================\\x1b[0m');",
+            "    ${4:controller}.${5:function}.then(",
+            "        data => {",
+            "           res.status(200).json(data);",
+            "console.log('\\x1b[44m====== ~ end ${3:path} api ~ ===================================\\x1b[0m');",
+            "       }, err => {",
+            "          if(err.code){",
+            "               res.status(err.code).json({messages: err.messages});",
+            "           }else{",
+            "               res.status(500).json(err);",
+            "           }",
+            "console.log('\\x1b[41m====== ~ end Error ${3:path} api ~ ===================================\\x1b[0m');",
+            "       }",
+            "   )",
+            "}));",
+        ],
+        "description": "HTTP (POST, GET, DELETE, PUT,...)"
+    },
+    "debug break":{
+        "prefix": "debugBreak",
+        "body": [
+            "console.log('\\x1b[42m\\x1b[30m====== ~ ${1:information} ~ ===================================\\x1b[0m');",
+        ]
+    },
+    "db-config": {
+        "prefix": "!expressDBConfig",
+        "body": [
+            "// MySQL configuration",
+            "module.exports = {",
+            "   HOST: \"${1:localhost}\",",
+            "   USER: \"${2:root}\",",
+            "   PASSWORD: \"${3:root}\",",
+            "   DB: \"${4:dbname}\",",
+            "   dialect: \"mysql\",",
+            "  pool: {",
+            "       max: 5,",
+            "       min: 0,",
+            "       acquire: 30000,",
+            "       idle: 10000",
+            "   }",
+            "};",
+        ],
+        "description": "Express Database config"
+    },
+    "sequenlize-config": {
+        "prefix": "!expressSequenlize",
+        "body": [
+            "const dbConfig = require(\"./Db-config\");",
+            "",
+            "const Sequelize = require(\"sequelize\");",
+            "",
+            "const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {",
+            "    host: dbConfig.HOST,",
+            "   dialect: dbConfig.dialect,",
+            "    operatorsAliases: false,",
+            "   logging: false,",
+            "    pool: {",
+            "        max: dbConfig.pool.max,",
+            "       min: dbConfig.pool.min,",
+            "        acquire: dbConfig.pool.acquire,",
+            "       idle: dbConfig.pool.idle",
+            "   }",
+            "});",
+            "",
+            "module.exports = sequelize;"
+        ],
+        "description": "Express sequenlize config"
+    },
+    "server.js": {
+        "prefix": "!expressServer.js",
+        "body": [
+            "const http = require('http');",
+            "const app = require('./app');",
+            "",
+            "const port = process.env.PORT || ${1:3000};",
+            "",
+            "const server = http.createServer(app);",
+            "",
+            "server.listen(port);",
+        ],
+        "description": "Express generate server.js"
+    },
+    "app.js": {
+        "prefix": "!expressApp.js",
+        "body": [
+            "const express = require('express');",
+            "const app = express();",
+            "const bodyParser = require('body-parser');",
+            "",
+            "app.use(bodyParser.json()) // for parsing application/json",
+            "app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded",
+            "",
+            "app.use((req, res, next) => {",
+            "    res.header(\"Access-Control-Allow-Origin\", \"*\");",
+            "    res.header(",
+            "        \"Access-Control-Allow-Headers\",",
+            "        \"Origin, X-Requested-With, Content-Type, Accept, Authorization,  X-Access-Token\"",
+            "    );",
+            "    if (req.method === 'OPTIONS') {",
+            "        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');",
+            "        return res.status(200).json({});",
+            "   }",
+            "   next();",
+            "});",
+            "",
+            "// config sequelize, db",
+            "const sequelize = require(\"./configurations/Squelize-config\");",
+            "sequelize.sync();",
+            "  ",
+            "// routing rout1",
+            "const rout1 = require('./routes/rout1');",
+            "app.use('/rout1', rout1);",
+            "",
+            "module.exports = app;"
+        ],
+        "description": "Express app.js"
+    },
+    "express model": {
+        "prefix": "!expressModel",
+        "body": [
+            "const { Sequelize, DataTypes, DATE } = require('sequelize');",
+            "",
+            "const sequelize = require(\"../configurations/Squelize-config\");",
+            "",
+            "const ${1:DBModel} = sequelize.define(${2:tablename}, {",
+            "    ${3:mapField1}: { type: DataTypes.${4|INTEGER,STRING,DATE,BOOLEAN|}, autoIncrement: true, primaryKey: true, field: '${5:attribute1}' },",
+            "   ${6:mapField2}: { type: DataTypes.${7|INTEGER,STRING,DATE,BOOLEAN|}, field: '${8:attribute2}' },",
+            "}, {",
+            "    timestamps: false,",
+            "    freezeTableName: true",
+            "});",
+            "",
+            "module.exports =  ${1:DBModel};",
+        ],
+        "description": "Express model"
+    },
+    "expressUsingRoute": {
+        "prefix": "!expressUseRoute",
+        "body": [
+            "// routing ${1:route1}",
+            "const ${2:route} = require('./routes/${3:route1}');",
+            "app.use('/${4:route}', ${2:route});",
+            "",
+        ],
+        "description": "Using Route in app.js"
+    },
+    "express require": {
+        "prefix": "!expressRequire",
+        "body": [
+            "const ${1:var1} = require('${2:link}');"
+        ],
+        "description": "Express require module"
+    },
+    "express reqData": {
+        "prefix": "!expressReqData",
+        "body": "let reqData = req.${1|params,body,query,{},'',[]|};",
+        "description": "Express requestData"
+    },
+    "express model field": {
+        "prefix": "!expressModelField",
+        "body": [
+            "   ${1:mapField2}: { type: DataTypes.${2|INTEGER,STRING,DATE,BOOLEAN|}, field: '${3:attribute2}' },",
+        ],
+        "description": "API model attribue"
+    },
+    "debug": {
+        "prefix": "debug",
+        "body": [
+            "//debug",
+            "console.log('\\x1b[33m ${1:item} :\\x1b[0m',${2:item});"
+        ],
+        "description": "debuging"
+    },
+    "comment function": {
+        "prefix": "cmtFunct",
+        "body": [
+            "",
+            "/**",
+            "* @name ${1:function1}",
+            "* @param {object} ${2:param1}",
+            "* @param {object} ${3:param2}",
+            "* @returns $4",
+            "* @description $5",
+            " */",
+        ],
+        "description": "Commnent for function"
+    },
+    "respond data": {
+        "prefix": "!expressRespondData",
+        "body": "responseData={messages: 'Success.'};",
+        "description": "Respond success data"
+    },
+    "respond data array": {
+        "prefix": "!expressRespondCustom",
+        "body": "responseData={${1|messages,data,value|}: ${2:data} };",
+        "description": "Respond success data"
+    },
+    "edit error respond data": {
+        "prefix": "!expressErrorRespond",
+        "body": [
+            "flag = true;",
+            "responseData = { code:  ${1|500,404,400,403|}, messages: '${2:Missing value.}' };"
+        ],
+        "description": "Respond error data"
+    },
+    "express Sequenlize finding": {
+        "prefix": "!expressSeqFinding",
+        "body": "let ${1:data} = await ${2:model}.${3|findAll,findByPk,findOne,findOrCreate,findAndCountAll|}($4);",
+        "description": "Sequenlize finding"
+    },
+    "express Sequenlize delete": {
+        "prefix": "!expressSeqDelete",
+        "body": "await  ${1:model}.destroy($2)",
+        "description": "Sequenlize delete"
+    },
+    "express Sequenlize create": {
+        "prefix": "!expressSeqCreate",
+        "body": "await  ${1:model}.create($2)",
+        "description": "Sequenlize create"
+    },
+    "express Sequenlize op": {
+        "prefix": "!expressOp",
+        "body": "[Op.${1|eq,ne,and,or,gt,gte,lt,lte,between,notBetween,like,notLike|}] = ${2:sth}",
+        "description": "=, !=, and, or, >, >=, <, <=, between a and b, not between a and b, like, not like"
+    }
+}
