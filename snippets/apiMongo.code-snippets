@@ -37,7 +37,7 @@
     "mongoose db field":{
         "prefix": "!expMongModelField",
         "body": [
-            "    ${1:attribute}: { type: ${2|String,Date,Number,Boolean,Array|} , ${3|required:true, |} },",
+            "${1:attribute}: { type: ${2|String,Date,Number,Boolean,Array|} , ${3|required:true, |} },",
         ]
     },
 

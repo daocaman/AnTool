@@ -1,6 +1,6 @@
 {
-    "new controller": {
-        "prefix": "!expressController",
+    "New Controller": {
+        "prefix": "!expCon",
         "body": [
             "const ${1:tb} = require(\"../models/${1:tb}\"); //${1:tb} tablename",
             "",
@@ -13,16 +13,16 @@
             "",
             "module.exports = ${2:nameController}",
         ],
-        "description": "Express Api Controller"
+        "description": "Express API Controller"
     },
-    "function controller to module": {
-        "prefix": "!expressControllerVar",
+    "Attribute Object": {
+        "prefix": "!expAttr",
         "body": [
-            "${1:functionname}: null,"
+            "${1:field}: ${2|null,'',{}|},"
         ],
-        "description": "function controller to module"
+        "description": "Attribute for object"
     },
-    "function controller": {
+    "Function controller": {
         "prefix": "!expFnctCon",
         "body": [
             "",
@@ -63,24 +63,23 @@
         ],
         "description": "Api Controller function"
     },
-    "return promise object": {
-        "prefix": "!expressReturnPromise",
+    "Return Promise": {
+        "prefix": "!expReturnPromise",
         "body": [
-            " return new Promise((resolve, reject) => {",
-            "$1",
-            "    });",
-            "",
+            "return new Promise((resolve, reject) => {",
+            "    $1",
+            "});",
         ],
-        "description": "Return Promise object"
+        "description": "Return Promise"
     },
-    "return if else async":{
-        "prefix": "!expressReturn",
+    "Return if-else async": {
+        "prefix": "!expReturn",
         "body": [
-            "        if (flag) {",
-            "           throw(responseData);",
-            "        } else {",
-            "           return responseData;",
-            "       }",
+            "if (flag) {",
+            "   throw(responseData);",
+            "} else {",
+            "   return responseData;",
+            "}",
         ]
     },
     "route express": {
@@ -122,7 +121,7 @@
         ],
         "description": "HTTP (POST, GET, DELETE, PUT,...)"
     },
-    "debug break":{
+    "debug break": {
         "prefix": "debugBreak",
         "body": [
             "console.log('\\x1b[42m\\x1b[30m====== ~ ${1:information} ~ ===================================\\x1b[0m');",
@@ -265,7 +264,7 @@
     "express model field": {
         "prefix": "!expressModelField",
         "body": [
-            "   ${1:mapField2}: { type: DataTypes.${2|INTEGER,STRING,DATE,BOOLEAN|}, field: '${3:attribute2}' },",
+            "${1:field}: { type: DataTypes.${2|INTEGER,STRING,DATE,BOOLEAN|}, field: '${3:attribute}' },",
         ],
         "description": "API model attribue"
     },

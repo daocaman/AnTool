@@ -1,11 +1,8 @@
+|  STT  | Snippet | Link |
+| :---: | ------- | ---- |
+|1|Express function controller|[link](#Express function controller)|
 
-
-### Angular snippets 
-
-[More information](./readme/api.md)
-
-
-*1. Express function controller*
+### *1. Express function controller*
 
 #### Prefix : 
 ```
@@ -59,3 +56,5 @@
             
     }
 ```
+
+---
