@@ -11,8 +11,15 @@
 
 #### Table variable
 
-| | STT | Function name | Choose type | Description |  |
-| - | - | - |  - |
+ |  STT  | Default / Choose type       | Description              |
+ | :---: | --------------------------- | ------------------------ |
+ |   1   | function1                   | Function name            |
+ |   2   | (String,number,Date,Object) | Choose type of parameter |
+ |   3   | param1                      | Parameter                |
+ |   4   | object                      | Return type              |
+ |   5   | object                      | Function description     |
+ |   6   | controller                  | Controller               |
+
 ``` Javascript
     /**
     * @name ${1:function1}
@@ -27,7 +34,7 @@
         let responseData = { messages: "", code: 500 };
         let flag = false;
         try {
-
+            $7
         } catch (error) {
             flag = true;
             if(error.code){
