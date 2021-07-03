@@ -1,8 +1,8 @@
 ## Table snippets
 |  STT  | Snippets                    | Link                                  |
 | :---: | :-------------------------- | :------------------------------------ |
-|   1   | Express app.js              | [link](#1Express_appjs)              |
-|   2   | Express server.js           | [link](#2Express_serverjs)           |
+|   1   | Express app.js              | [link](#1Express-appjs)              |
+|   2   | Express server.js           | [link](#2Express-serverjs)           |
 |   3   | Express Function Controller | [link](#1Express-function-controller) |
 
 ### *1.Express app.js*
