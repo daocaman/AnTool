@@ -185,12 +185,13 @@
         ],
         "description": "Express generate server.js"
     },
-    "app.js": {
-        "prefix": "!expressApp.js",
+    "Express app.js": {
+        "prefix": "!expApp.js",
         "body": [
             "const express = require('express');",
             "const app = express();",
             "const bodyParser = require('body-parser');",
+            "const logger = require('morgan');",
             "",
             "app.use(bodyParser.json()) // for parsing application/json",
             "app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded",
@@ -211,10 +212,6 @@
             "// config sequelize, db",
             "const sequelize = require(\"./configurations/Squelize-config\");",
             "sequelize.sync();",
-            "  ",
-            "// routing rout1",
-            "const rout1 = require('./routes/rout1');",
-            "app.use('/rout1', rout1);",
             "",
             "module.exports = app;"
         ],
