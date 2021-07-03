@@ -11,6 +11,8 @@
 
 #### Table variable
 
+| | STT | Function name | Choose type | Description |  |
+| - | - | - |  - |
 ``` Javascript
     /**
     * @name ${1:function1}
