@@ -6,7 +6,7 @@
     "icon": "kitty.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/daocaman/antool"
+        "url": "https://github.com/daocaman/AnTool"
     },
     "engines": {
         "vscode": "^1.55.0"
