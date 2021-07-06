@@ -1,9 +1,14 @@
 ## Table snippets
-|  STT  | Snippets              | Link                            |
-| :---: | :-------------------- | :------------------------------ |
-|   1   | Angular service       | [link](#1Angular-service)       |
-|   1   | Angular cookie helper | [link](#2Angular-cookie-helper) |
-|   1   | Angular cookie helper | [link](#3Angular-url-helper) |
+|  STT  | Snippets                      | Link                                     |
+| :---: | :---------------------------- | :--------------------------------------- |
+|   1   | Angular service               | [link](#1Angular-service)                |
+|   2   | Angular cookie helper         | [link](#2Angular-cookie-helper)          |
+|   3   | Angular url helper            | [link](#3Angular-url-helper)             |
+|   4   | Angular service api           | [link](#4Angular-service-api)            |
+|   5   | Angular dialog service        | [link](#5Angular-dialog-service)         |
+|   6   | Angular RespnseData interface | [link](#6Angular-ResponseData-interface) |
+|   7   | Angular Pagination interface  | [link](#7Angular-Pagination-interface)   |
+
 
 ### *1.Angular service*
 
@@ -136,6 +141,230 @@ export function merge(domain, path, endpoint, queryParams = null) {
     } else {
         return `${domain}/${endpoint}${query(queryParams)}`;
     }
+}
+```
+
+---
+###
+
+### *4.Angular service api*
+
+#### Prefix
+```
+!angApiService
+```
+
+#### Code generate
+
+``` Typescript
+
+apiServer: string = environment.apiServer;
+constructor(private http: HttpClient) { }
+            
+/**
+* REQUEST API
+* METHOD POST
+*
+* @param {string} path
+* @param {string} endpoint
+* @param {*} [data={}]
+* @returns {Observable<any>}
+* @memberof ApiService
+*/
+get(path: string, endpoint: string, data: any = {}) {
+    return this.http.get(url.merge(this.apiServer, path, endpoint, data));
+}
+/**
+* 
+* REQUEST API
+* METHOD DELETE
+* 
+* @param {string} path
+* @param {string} endpoint
+* @param {*} [data={}]
+* @returns {Observable<any>}
+* @memberof ApiService
+* 
+* 
+*/
+
+delete(path: string, endpoint: string, data: any = {}) {
+    return this.http.delete(url.merge(this.apiServer, path, endpoint, data));
+}
+
+/**
+* REQUEST API
+* METHOD POST
+*
+* @param {string} path
+* @param {string} endpoint
+* @param {*} [data={}]
+* @param {*} [options={}]
+* @returns
+* @memberof ApiService
+*/
+post(path: string, endpoint: string, data: any = {}, options: any = null) :Observable<any>{
+    let httpOptions;
+    if (!options || options.type != 'multipart/form-data') {
+        httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': (options && options.type) ? options.type : 'application/json'
+            }),
+            responseType: 'json'
+        };
+    } else {
+        httpOptions = {
+            headers: new HttpHeaders({}),
+            responseType: 'json'
+        };
+    }
+    return this.http.post(url.merge(this.apiServer, path, endpoint), data, httpOptions);
+}
+
+/**
+* REQUEST API
+* METHOD PUT
+* @param {string} path
+* @param {string} endpoint
+* @param {*} data
+* @param {*} [options]
+* @returns {Observable<any>}
+* @memberof ApiService
+*/
+put(path: string, endpoint: string, data: any, options?: any): Observable<any> {
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': (options && options.type) ? options.type : 'application/json',
+        })
+    };
+    return this.http.put(url.merge(this.apiServer, path, endpoint), data, httpOptions);
+}
+
+/**
+* REQUEST API FOR FILE DATA
+* METHOD POST
+* @param {string} path
+* @param {string} endpoint
+* @param {*} data
+* @param {*} options
+* @returns {Observable<any>}
+* @memberof ApiService
+*/
+file(path: string, endpoint: string, data: any, options: any): Observable<any> {
+    return this.http.post(url.merge(this.apiServer, path, endpoint), data, options);
+}
+/**
+* Convert json to urlencoded
+* 
+* @static
+* @param {*} data
+* @returns
+* @memberof ApiService
+*/
+public static convertToFormUrlencoded(data) {
+    return Object.keys(data).map(key => {
+        return key + '=' + encodeURIComponent(data[key]);
+        }).join('&');
+}
+
+/**
+* Convert json to query string
+*
+* @static
+* @param {string} url
+* @param {*} data
+* @returns
+* @memberof ApiService
+*/
+public static convertToQueryString(url: string, data: any) {
+    const query = Object.keys(data).map(key => key + '=' + encodeURIComponent(data[key])).join('&');
+    return url + '?' + query;
+}
+```
+
+---
+###
+
+### *5.Angular dialog service*
+
+#### Prefix
+```
+!angDlogService
+```
+
+#### Code generate
+
+``` Typescript
+
+export interface option {
+    class?: string,
+    initialState?: any,
+}
+            
+@Injectable({
+    providedIn: 'root'
+})
+export class DialogService {
+    modalRef: BsModalRef;
+    constructor(private modalService: BsModalService) { }
+            
+    // Bootstrap Dialog
+    openModal(template: any, data: option = null) {
+        this.modalRef = this.modalService.show(template, data);
+    }
+            
+    hideModal() {
+        this.modalRef.hide();
+    }
+}
+```
+
+---
+###
+
+### *6.Angular ResponseData interface*
+
+#### Prefix
+```
+!angResponseInter
+```
+
+#### Code generate
+
+``` Typescript
+
+export interface ResponseData {
+    meta?: {
+        current_page: number
+        num_pages: number
+        num_per_page: number
+        total: number
+    },
+    data?: Array<any>,
+    value?: any,
+    messages?: string
+}
+```
+
+---
+###
+
+### *7.Angular Pagination interface*
+
+#### Prefix
+```
+!angPageInter
+```
+
+#### Code generate
+
+``` Typescript
+
+export interface PaginationOption {
+    total: number,
+    num_pages: number,
+    current_page: number,
+    num_per_page: number
 }
 ```
 

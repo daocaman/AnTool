@@ -76,16 +76,16 @@
             "   }",
             "   return this.http.post(url.merge(this.apiServer, path, endpoint), data, httpOptions);",
             "}",
-            " /**",
+            "/**",
             "* REQUEST API",
             "* METHOD PUT",
-            " * @param {string} path",
-            " * @param {string} endpoint",
-            " * @param {*} data",
-            " * @param {*} [options]",
-            "  * @returns {Observable<any>}",
-            "  * @memberof ApiService",
-            "  */",
+            "* @param {string} path",
+            "* @param {string} endpoint",
+            "* @param {*} data",
+            "* @param {*} [options]",
+            "* @returns {Observable<any>}",
+            "* @memberof ApiService",
+            "*/",
             "put(path: string, endpoint: string, data: any, options?: any): Observable<any> {",
             "   const httpOptions = {",
             "       headers: new HttpHeaders({",
@@ -118,7 +118,7 @@
             "public static convertToFormUrlencoded(data) {",
             "   return Object.keys(data).map(key => {",
             "       return key + '=' + encodeURIComponent(data[key]);",
-            "       }).join('&');",
+            "   }).join('&');",
             "}",
             "/**",
             "* Convert json to query string",
@@ -137,7 +137,7 @@
         "description": "Angular api service"
     },
     "dialog service": {
-        "prefix": "!angDialogService",
+        "prefix": "!angDlogService",
         "body": [
             "export interface option {",
             "   class?: string,",
@@ -254,7 +254,7 @@
         "description": "Angular url helper"
     },
     "respondData interface": {
-        "prefix": "!angResponseInterface",
+        "prefix": "!angResponseInter",
         "body": [
             "export interface ResponseData {",
             "   meta?: {",
