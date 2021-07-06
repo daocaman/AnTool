@@ -8,6 +8,7 @@
 |   5   | Angular dialog service        | [link](#5Angular-dialog-service)         |
 |   6   | Angular RespnseData interface | [link](#6Angular-ResponseData-interface) |
 |   7   | Angular Pagination interface  | [link](#7Angular-Pagination-interface)   |
+|   8   | Angular Modal Component       | [link](#8Angular-modal-component)        |
 
 
 ### *1.Angular service*
@@ -388,10 +389,28 @@ export interface PaginationOption {
 
 #### Table variables
 
+|  STT  | Default / Choose type | Description   |
+| :---: | --------------------- | ------------- |
+|   1   | any                   | Type of value |
+|   2   | service               | Service var   |
+|   3   | Service               | Service class |
+
 #### Code generate
 
-``` Javascript
+``` Typescript
+ 
+value: ${1:any};
+            
+submitCall: any;
 
+constructor(
+    private bsModalRef: BsModalRef,
+    private _${2:service}: ${3:Service}
+) { }
+
+closeModal() {
+    this.bsModalRef.hide();
+}
 ```
 
 ---
