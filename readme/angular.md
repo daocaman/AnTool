@@ -9,6 +9,8 @@
 |   6   | Angular RespnseData interface | [link](#6Angular-ResponseData-interface) |
 |   7   | Angular Pagination interface  | [link](#7Angular-Pagination-interface)   |
 |   8   | Angular Modal Component       | [link](#8Angular-modal-component)        |
+|   9   | Angular service function      | [link](#9Angular-service-function)       |
+
 
 
 ### *1.Angular service*
@@ -410,6 +412,35 @@ constructor(
 
 closeModal() {
     this.bsModalRef.hide();
+}
+```
+
+---
+###
+
+### *9.Angular service function*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angServiceFnct
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type      | Description         |
+| :---: | -------------------------- | ------------------- |
+|   1   | functionname               | Function name       |
+|   2   |                            | Variables functions |
+|   3   | (get,delete,post,put,file) | Http method         |
+|   4   | name                       | End point           |
+|   5   |                            | Data post if need   |
+
+#### Code generate
+
+``` Typescript
+${1:functcionname}($2}) {
+    return this._api.${3|get,delete,post,put,file|}(this.path, this.endpoints.${4:name}$5);
 }
 ```
 
