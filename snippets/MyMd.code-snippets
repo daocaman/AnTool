@@ -3,6 +3,7 @@
         "prefix": "!mdDoc",
         "body": [
             "### *${1:prefixName}*",
+            "[menu](#Table-snippets)",
             "",
             "#### Prefix",
             "```",

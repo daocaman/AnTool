@@ -11,6 +11,7 @@
 
 
 ### *1.Angular service*
+[menu](#Table-snippets)
 
 #### Prefix
 ```
@@ -38,6 +39,7 @@ constructor(private _api: ApiService) { }
 ###
 
 ### *2.Angular cookie helper*
+[menu](#Table-snippets)
 
 #### Prefix
 ```
@@ -97,6 +99,7 @@ export function remove(key) {
 ###
 
 ### *3.Angular url helper*
+[menu](#Table-snippets)
 
 #### Prefix
 ```
@@ -148,6 +151,7 @@ export function merge(domain, path, endpoint, queryParams = null) {
 ###
 
 ### *4.Angular service api*
+[menu](#Table-snippets)
 
 #### Prefix
 ```
@@ -286,6 +290,7 @@ public static convertToQueryString(url: string, data: any) {
 ###
 
 ### *5.Angular dialog service*
+[menu](#Table-snippets)
 
 #### Prefix
 ```
@@ -323,6 +328,7 @@ export class DialogService {
 ###
 
 ### *6.Angular ResponseData interface*
+[menu](#Table-snippets)
 
 #### Prefix
 ```
@@ -350,6 +356,7 @@ export interface ResponseData {
 ###
 
 ### *7.Angular Pagination interface*
+[menu](#Table-snippets)
 
 #### Prefix
 ```
