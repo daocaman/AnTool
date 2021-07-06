@@ -12,6 +12,11 @@
 
 #### Table variables
 
+|  STT  | Default / Choose type | Description    |
+| :---: | --------------------- | -------------- |
+|   1   |                       | Path api       |
+|   2   |                       | End points api |
+
 #### Code generate
 
 ``` Typescript
@@ -21,7 +26,25 @@ endpoints = {
     $2
 };
             
-constructor(private _api: ApiService) { }"
+constructor(private _api: ApiService) { }
 ```
+###
+
+### *prefixName*
+
+#### Prefix
+```
+
+```
+
+#### Table variables
+
+#### Code generate
+
+``` Javascript
+
+```
+
+---
 
 
