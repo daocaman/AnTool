@@ -1,0 +1,23 @@
+{
+    "Generate docs snippets": {
+        "prefix": "!mdDoc",
+        "body": [
+            "### *${1:prefixName}*",
+            "",
+            "#### Prefix",
+            "```",
+            "${2}",
+            "```",
+            "",
+            "#### Table variables",
+            "",
+            "#### Code generate",
+            "",
+            "``` ${3:Javascript}",
+            "${4}",
+            "```",
+            ""
+        ],
+        "description": "Doc snippets"
+    }
+}

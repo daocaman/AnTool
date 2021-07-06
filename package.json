@@ -25,7 +25,11 @@
             },
             {
                 "language": "javascript",
-                "path": "./snippets/apiMongo.code-snippets"
+                "path": "./snippets/mongo.code-snippets"
+            },
+            {
+                "language": "javascript",
+                "path": "./snippets/seq.code-snippets"
             },
             {
                 "language": "typescript",
@@ -38,6 +42,10 @@
             {
                 "language": "html",
                 "path": "./snippets/bs4.code-snippets"
+            },
+            {
+                "language": "md",
+                "path": "./snippets/MyMd.code-snippets"
             }
         ]
     }

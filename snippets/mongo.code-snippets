@@ -25,7 +25,7 @@
             "mongoose.Promise = global.Promise;",
             "",
             "const ${1:schemaName} = new mongoose.Schema({",
-            "    ${2:attribute}: { type: ${3|String,Date,Number,Boolean,Array|} , ${4|required:true, |} },",
+            "    ${2:attribute}: { type: ${3|String,Date,Number,Boolean,Array|} , ${4| ,required:true|} },",
             "",
             " }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });",
             "",
@@ -43,7 +43,7 @@
 
     "mongoose db find":{
         "prefix": "!expMongFind",
-        "body": "await ${1:MyModel}.find(${2|{}, |}, ${3|null,'attr1 attr2' |}, ${4|{ skip: 10 , limit: 10}, |}).exec();"
+        "body": "await ${1:MyModel}.find(${2| ,{}|}, ${3|null,'attr1 attr2' |}, ${4| ,{ skip: 10 , limit: 10}|}).exec();"
     },
 
     "mongoose db findOne":{
@@ -58,7 +58,7 @@
 
     "mongoose db create":{
         "prefix": "!expMongCreate",
-        "body": "await ${1:Model}.create(${2|{ },[]|});"
+        "body": "await ${1:Model}.create(${2| ,{ },[]|});"
     }
 
 

@@ -6,3 +6,4 @@
 
 ## Angular snippets
 
+[More information](./readme/angular.md)

@@ -1,0 +1,91 @@
+{
+    "Sequenlize configuration": {
+        "prefix": "!seqConfig",
+        "body": [
+            "const dbConfig = require(\"./Db-config\");",
+            "",
+            "const Sequelize = require(\"sequelize\");",
+            "",
+            "const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {",
+            "   host: dbConfig.HOST,",
+            "   dialect: dbConfig.dialect,",
+            "   operatorsAliases: false,",
+            "   logging: false,",
+            "   pool: {",
+            "       max: dbConfig.pool.max,",
+            "       min: dbConfig.pool.min,",
+            "       acquire: dbConfig.pool.acquire,",
+            "       idle: dbConfig.pool.idle",
+            "   }",
+            "});",
+            "",
+            "module.exports = sequelize;"
+        ],
+        "description": "Express sequenlize config"
+    },
+    "Sequenlize mysql config": {
+        "prefix": "!seqMSQLConfig",
+        "body": [
+            "// MySQL configuration",
+            "module.exports = {",
+            "   HOST: \"${1:localhost}\",",
+            "   USER: \"${2:root}\",",
+            "   PASSWORD: \"${3:root}\",",
+            "   DB: \"${4:dbname}\",",
+            "   dialect: \"mysql\",",
+            "   pool: {",
+            "       max: 5,",
+            "       min: 0,",
+            "       acquire: 30000,",
+            "       idle: 10000",
+            "   }",
+            "};",
+        ],
+        "description": "Sequenlize mysql config"
+    },
+    "Model sequenlize": {
+        "prefix": "!seqModel",
+        "body": [
+            "const { Sequelize, DataTypes, DATE } = require('sequelize');",
+            "",
+            "const sequelize = require(\"../configurations/Squelize-config\");",
+            "",
+            "const ${1:DBModel} = sequelize.define(${2:tablename}, {",
+            "    ${3:mapField1}: { type: DataTypes.${4|INTEGER,STRING,DATE,BOOLEAN|}, autoIncrement: true, primaryKey: true, field: '${5:attribute1}' },",
+            "}, {",
+            "    timestamps: false,",
+            "    freezeTableName: true",
+            "});",
+            "",
+            "module.exports =  ${1:DBModel};",
+        ],
+        "description": "Express Sequenlize model"
+    },
+    "Field model sequenlize": {
+        "prefix": "!seqModelField",
+        "body": [
+            "${1:field}: { type: DataTypes.${2|INTEGER,STRING,DATE,BOOLEAN|}, field: '${3:attribute}' },",
+        ],
+        "description": "Field model sequenlize"
+    },
+    "Sequenlize finding": {
+        "prefix": "!seqFinding",
+        "body": "let ${1:data} = await ${2:model}.${3|findAll,findByPk,findOne,findOrCreate,findAndCountAll|}($4);",
+        "description": "Sequenlize finding"
+    },
+    "Sequenlize delete": {
+        "prefix": "!seqDelete",
+        "body": "await  ${1:model}.destroy($2)",
+        "description": "Sequenlize delete"
+    },
+    "Sequenlize create": {
+        "prefix": "!SeqCreate",
+        "body": "await  ${1:model}.create($2)",
+        "description": "Sequenlize create"
+    },
+    "Sequenlize op": {
+        "prefix": "!seqOp",
+        "body": "[Op.${1|eq,ne,and,or,gt,gte,lt,lte,between,notBetween,like,notLike|}] = ${2:sth}",
+        "description": "=, !=, and, or, >, >=, <, <=, between a and b, not between a and b, like, not like"
+    }
+}
