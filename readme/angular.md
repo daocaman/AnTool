@@ -10,7 +10,7 @@
 |   7   | Angular Pagination interface  | [link](#7Angular-Pagination-interface)   |
 |   8   | Angular Modal Component       | [link](#8Angular-modal-component)        |
 |   9   | Angular service function      | [link](#9Angular-service-function)       |
-
+|  10   | Angular form object           | [link](#10Angular-form-object)           |
 
 
 ### *1.Angular service*
@@ -444,5 +444,32 @@ ${1:functcionname}($2}) {
 }
 ```
 
+---
+###
+
+### *10.Angular form object*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angFormObj
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type  | Description        |
+| :---: | ---------------------- | ------------------ |
+|   1   | nameForm               | Form variable      |
+|   2   | control1               | Form control field |
+|   3   | ( ,'')                 | Default value      |
+|   4   | ( ,Validator.required) | Validator          |
+
+#### Code generate
+
+``` Typescript
+${1:nameForm}: FormGroup = new FormGroup({
+    ${2:control1}: new FormControl(${3| ,''|},${4| ,Validator.required|}),
+});
+```
 ---
 ###

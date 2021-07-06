@@ -136,7 +136,7 @@
         ],
         "description": "Angular api service"
     },
-    "dialog service": {
+    "Dialog service": {
         "prefix": "!angDlogService",
         "body": [
             "export interface option {",
@@ -163,7 +163,7 @@
         ],
         "description": "Angular dialog service (ngx-bootstrap)"
     },
-    "cookie helper": {
+    "Cookie helper": {
         "prefix": "!angCookie",
         "body": [
             "/**",
@@ -212,7 +212,7 @@
         ],
         "description": "Angular cookie helper"
     },
-    "url helper": {
+    "Url helper": {
         "prefix": "!angUrlHelper",
         "body": [
             "/**",
@@ -253,7 +253,7 @@
         ],
         "description": "Angular url helper"
     },
-    "respondData interface": {
+    "ResponseData interface": {
         "prefix": "!angResponseInter",
         "body": [
             "export interface ResponseData {",
@@ -270,7 +270,7 @@
         ],
         "description": "RespondData interface"
     },
-    "pagination interface": {
+    "Pagination interface": {
         "prefix": "!angPageInter",
         "body": [
             "export interface PaginationOption {",
@@ -282,8 +282,8 @@
         ],
         "description": "Pagination interface"
     },
-    "modal component": {
-        "prefix": "!angModalComponent",
+    "Modal component": {
+        "prefix": "!angModalCom",
         "body": [
             "value: ${1:any};",
             "",
@@ -300,8 +300,8 @@
         ],
         "description": "Angular modal component"
     },
-    "serivce function": {
-        "prefix": "!angServiceFunction",
+    "Service function": {
+        "prefix": "!angServiceFnct",
         "body": [
             "${1:functcionname}($2}) {",
             "   return this._api.${3|get,delete,post,put,file|}(this.path, this.endpoints.${4:name}$5);",
@@ -309,11 +309,11 @@
         ],
         "description": "Angular service function"
     },
-    "form object": {
+    "Form object": {
         "prefix": "!angFormObj",
         "body": [
             "${1:nameForm}: FormGroup = new FormGroup({",
-            "   ${2:control1}: new FormControl(),",
+            "   ${2:control1}: new FormControl(${3| ,''|},${4| ,Validator.required|}),",
             "})",
         ],
         "description": "Angular formgroup"
