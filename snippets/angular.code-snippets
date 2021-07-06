@@ -271,7 +271,7 @@
         "description": "RespondData interface"
     },
     "pagination interface": {
-        "prefix": "!angPagination",
+        "prefix": "!angPageInter",
         "body": [
             "export interface PaginationOption {",
             "   total: number,",

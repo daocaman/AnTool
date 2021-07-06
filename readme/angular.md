@@ -377,3 +377,22 @@ export interface PaginationOption {
 
 ---
 ###
+
+### *8.Angular modal component*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angModalCom
+```
+
+#### Table variables
+
+#### Code generate
+
+``` Javascript
+
+```
+
+---
+###
