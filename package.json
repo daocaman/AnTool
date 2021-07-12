@@ -14,7 +14,7 @@
     "categories": [
         "Snippets"
     ],
-    "readme": "./README.md",
+    "readme": "README.md",
     "main": "./snippets",
     "homepage": "https://github.com/daocaman/AnTool#readme",
     "contributes": {
