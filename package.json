@@ -2,7 +2,7 @@
     "name": "antool",
     "displayName": "AnTool",
     "description": "generate code",
-    "version": "0.0.1",
+    "version": "1.1",
     "icon": "kitty.png",
     "repository": {
         "type": "git",
