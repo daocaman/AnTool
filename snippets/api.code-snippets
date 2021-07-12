@@ -37,10 +37,6 @@
             "   next();",
             "});",
             "",
-            "// config sequelize, db",
-            "const sequelize = require(\"./configurations/Squelize-config\");",
-            "sequelize.sync();",
-            "",
             "module.exports = app;"
         ],
         "description": "Express app.js"
