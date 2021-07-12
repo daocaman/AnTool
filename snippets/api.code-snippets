@@ -119,7 +119,7 @@
     "Attribute Object": {
         "prefix": "!expAttr",
         "body": [
-            "${1:field}: ${2|null,'',{}|},"
+            "${1:field}: ${2| ,null,'',{}|},"
         ],
         "description": "Attribute for object"
     },

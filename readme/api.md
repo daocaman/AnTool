@@ -6,6 +6,8 @@
 |   3   | Express new controller      | [link](#3Express-new-controller)      |
 |   4   | Express route module        | [link](#4Express-route-module)        |
 |   5   | Express function controller | [link](#5Express-function-controller) |
+|   6   | Express attribute object    | [link](#6Express-attribute-object)    |
+|   7   | Express return promise      | [link](#7Express-return-promise)      |
 
 
 ### *1.Express server.js*
@@ -199,6 +201,70 @@ ${6:controller}.${1:function1} = async(${3:param1}) => {
         return responseData;
     }
 
+}
+```
+
+---
+###
+
+### *6.Express attribute object*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!expAttr
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description       |
+| :---: | --------------------- | ----------------- |
+|   1   | field                 | Field object name |
+|   2   | ( ,null,'',{})        | Value field       |
+
+#### Code generate
+
+``` Javascript
+${1:field}: ${2| ,null,'',{}|},
+```
+
+---
+###
+
+### *7.Express return promise*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!expReturnPromise
+```
+
+#### Code generate
+
+``` Javascript
+return new Promise((resolve, reject) => {
+    $1
+});
+```
+
+---
+###
+
+### *8.Express if-else async*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!expReturn
+```
+
+#### Code generate
+
+``` Javascript
+if (flag) {
+    throw(responseData);
+} else {
+    return responseData;
 }
 ```
 
