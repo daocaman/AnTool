@@ -1,6 +1,6 @@
 {
     "Express server.js": {
-        "prefix": "!expressServer.js",
+        "prefix": "!expServer.js",
         "body": [
             "const http = require('http');",
             "const app = require('./app');",
