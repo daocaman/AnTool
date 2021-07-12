@@ -402,75 +402,79 @@
         "body": "[ngClass]=\"{'${1:class1}': ${2:condition}, '${3:class2}':  ${4:condition} }\"",
         "description": "Angular ngClass"
     },
-    "angular ngStyle": {
+    "Angular ngStyle": {
         "prefix": "!angNgStyle",
         "body": "[ngStyle]=\"{${1:attr1}: ${2:condition}? ${3:op1}: ${4:op2}}\"",
         "description": "Angular ngStyle"
     },
-    "angular router-link": {
+    "Angular router-link": {
         "prefix": "!angRouterLink",
         "body": "[routerLink]=\"['${1:route}',${2:param1}]\"",
         "description": "Angular router link"
     },
-    "angular attribute": {
-        "prefix": "!angAttribute",
+    "Angular attribute": {
+        "prefix": "!angAttr",
         "body": "[attr.${1:attributename}]=\"${2:value}\"",
         "description": "Angular attribute"
     },
-    "angular formGroup": {
+    "Angular formGroup": {
         "prefix": "!angFormGroup",
         "body": "[formGroup]=\"${1:formname}\"",
         "description": "Angular formGroup"
     },
-    "angular formControl": {
+    "Angular formControlName": {
         "prefix": "!angFormControl",
         "body": "formControlName=\"${1:name}\"",
-        "description": "Angular formcontrol"
+        "description": "Angular formControlName"
     },
-    "angular translate/pipe": {
+    "Angular translate/pipe": {
         "prefix": "!angPipe",
         "body": "{{${1:value}|${2:translate}}}",
         "description": "Angular pipe value"
     },
-    "angular modal": {
-        "prefix": "!angModal",
+    "Angular router link active":{
+        "prefix": "!angRouteActive",
+        "body": "routerLinkActive=\"${1:active}\""
+    },
+    "Angular modal html": {
+        "prefix": "!angModalHtml",
         "body": [
             "<div class=\"modal-header\">",
-            "<button (click)=\"closeModal()\" type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">",
-            "    <span aria-hidden=\"true\">×</span>",
-            "</button>",
-            "<h4 class=\"modal-title\">",
-            "    $1",
-            " </h4>",
+            "   <button (click)=\"closeModal()\" type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">",
+            "       <span aria-hidden=\"true\">×</span>",
+            "   </button>",
+            "   <h4 class=\"modal-title\">",
+            "       $1",
+            "   </h4>",
             "</div>",
             "<div class=\"modal-body\">",
-            " $2 ",
+            "   $2 ",
             "</div>",
             "<div class=\"modal-footer\">",
-            "    <button (click)=\"closeModal()\" type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>",
+            "   <button (click)=\"closeModal()\" type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>",
             "</div>",
         ],
-        "description": "Angular modal"
+        "description": "Angular modal html"
     },
-    "angular pagination option": {
+    "Angular pagination option": {
         "prefix": "!angPaginationOption",
         "body": [
             "paginationOption: PaginationOption = {",
-            "    current_page: 1,",
-            "    num_pages: 10,",
-            "    num_per_page: 10,",
-            "    total: 1000",
-            "  };",
+            "   current_page: 1,",
+            "   num_pages: 10,",
+            "   num_per_page: 10,",
+            "   total: 1000",
+            "};",
             "handleChangePage(data: PaginationOption){}"
         ],
         "description": "Angular pagination option"
     },
-    "angular using modal": {
+    "Angular using modal": {
         "prefix": "!angUseModal",
-        "body": "this._modal.openModal(${1:ChangePassComponent}, {initialState: {}});",
+        "body": "this._modal.openModal(${1:Component}, {initialState: {$2}});",
         "description": "Angular using modal"
     },
-    "angular template pagination": {
+    "Angular template pagination": {
         "prefix": "!angPageTemplate",
         "body": "<app-pagination [paginationOption]=\"paginationOption\" (onPageChange)=\"handleChangePage($event) \">",
         "description": "Angular pagination component"

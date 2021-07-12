@@ -18,6 +18,17 @@
 |  15   | Angular ngFor                 | [link](#15Angular-ngFor)                 |
 |  16   | Angular ngIf                  | [link](#16Angular-ngIf)                  |
 |  17   | Angular ngClass               | [link](#17Angular-ngClass)               |
+|  18   | Angular ngStyle               | [link](#18Angular-ngStyle)               |
+|  19   | Angular router link           | [link](#19Angular-router-link)           |
+|  20   | Angular attribute             | [link](#20Angular-attribute)             |
+|  21   | Angular formgroup             | [link](#21Angular-formgroup)             |
+|  22   | Angular form control name     | [link](#22Angular-formcontrol-name)      |
+|  23   | Angular pipe                  | [link](#23Angular-pipe)                  |
+|  24   | Angular router link active    | [link](#24Angular-router-link-active)    |
+|  25   | Angular modal html            | [link](#25Angular-modal-html)            |
+|  26   | Angular pagination option     | [link](#26Angular-pagination-option)     |
+|  27   | Angular using modal           | [link](#27Angular-using-modal)           |
+|  28   | Angular template pagination   | [link](#28Angular-template-pagination)   |
 
 
 ### *1.Angular service*
@@ -694,6 +705,267 @@ const routes: Routes = [
 
 ``` Typescript
 [ngClass]="{'${1:class1}': ${2:condition}, '${3:class2}':  ${4:condition} }"
+```
+
+---
+###
+
+### *18.Angular ngStyle*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angNgStyle
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description         |
+| :---: | --------------------- | ------------------- |
+|   1   | attr1                 | Attribute style     |
+|   2   | condition             | Condition for style |
+|   3   | op1                   | Option 1 condition  |
+|   4   | op2                   | Option 2 condtion   |
+
+#### Code generate
+
+``` Typescript
+[ngStyle]="{${1:attr1}: ${2:condition}? ${3:op1}: ${4:op2}}"
+```
+
+---
+###
+
+### *19.Angular router link*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angRouterLink
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description   |
+| :---: | --------------------- | ------------- |
+|   1   | route                 | Routing link  |
+|   2   | param1                | Param routing |
+
+#### Code generate
+
+``` Javascript
+[routerLink]="['${1:route}',${2:param1}]"
+```
+
+---
+###
+
+### *20.Angular attribute*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angAttr
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description     |
+| :---: | --------------------- | --------------- |
+|   1   | attributename         | Attribute name  |
+|   2   | value                 | Value attribute |
+
+#### Code generate
+
+``` Typescript
+[attr.${1:attributename}]="${2:value}"
+```
+
+---
+###
+
+### *21.Angular formgroup*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angFormGroup
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description     |
+| :---: | --------------------- | --------------- |
+|   1   | formname              | Form group name |
+
+#### Code generate
+
+``` Typescript
+[formGroup]="${1:formname}"
+```
+
+---
+###
+
+### *22.Angular formcontrol name*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angFormControl
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description       |
+| :---: | --------------------- | ----------------- |
+|   1   | name                  | Form control name |
+
+#### Code generate
+
+``` Typescript
+formControlName="${1:name}"
+```
+
+---
+###
+
+### *23.Angular pipe*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angPipe
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description |
+| :---: | --------------------- | ----------- |
+|   1   | value                 | Value       |
+|   2   | translate             | Pipe value  |
+
+#### Code generate
+
+``` Typescript
+{{${1:value}|${2:translate}}}
+```
+
+---
+###
+
+### *24.Angular router link active*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angRouteActive
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description              |
+| :---: | --------------------- | ------------------------ |
+|   1   | active                | Active class for routing |
+
+#### Code generate
+
+``` Typescript
+routerLinkActive="${1:active}"
+```
+
+---
+###
+
+### *25.Angular modal html*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angModalHtml
+```
+
+#### Code generate
+
+``` Html
+<div class="modal-header">
+    <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title">
+        $1
+    </h4>
+</div>
+<div class="modal-body">
+    $2 
+</div>
+<div class="modal-footer">
+    <button (click)="closeModal()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+```
+
+---
+###
+
+### *26.Angular pagination option*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angPaginationOption
+```
+
+#### Code generate
+
+``` Typescript
+paginationOption: PaginationOption = {
+    current_page: 1,
+    num_pages: 10,
+    num_per_page: 10,
+    total: 1000
+};
+handleChangePage(data: PaginationOption){}
+```
+
+---
+###
+
+### *27.Angular using modal*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angUseModal
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description           |
+| :---: | --------------------- | --------------------- |
+|   1   | Component             | Modal component       |
+|   2   |                       | Place to inital state |
+
+#### Code generate
+
+``` Typescript
+this._modal.openModal(${1:Component}, {initialState: {$2}});
+```
+
+---
+###
+
+### *28.Angular template pagination*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angPageTemplate
+```
+
+#### Code generate
+
+``` Html
+<app-pagination [paginationOption]="paginationOption" (onPageChange)="handleChangePage($event)">
 ```
 
 ---
