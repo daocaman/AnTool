@@ -2,11 +2,11 @@
     "name": "antool",
     "displayName": "AnTool",
     "description": "generate code",
-    "version": "0.1",
+    "version": "0.0.1",
     "icon": "kitty.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/daocaman/AnTool"
+        "url": "https://github.com/daocaman/antool"
     },
     "engines": {
         "vscode": "^1.55.0"
