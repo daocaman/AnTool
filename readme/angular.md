@@ -29,6 +29,9 @@
 |  26   | Angular pagination option     | [link](#26Angular-pagination-option)     |
 |  27   | Angular using modal           | [link](#27Angular-using-modal)           |
 |  28   | Angular template pagination   | [link](#28Angular-template-pagination)   |
+|  29   | Angular jwt interceptor       | [link](#29Angular-jwt-interceptor)       |
+|  30   | Angular error interceptor     | [link](#30Angular-error-interceptor)     |
+|  31   | Angular import main module    | [link](#31Angular-import-module)         |
 
 
 ### *1.Angular service*
@@ -966,6 +969,119 @@ this._modal.openModal(${1:Component}, {initialState: {$2}});
 
 ``` Html
 <app-pagination [paginationOption]="paginationOption" (onPageChange)="handleChangePage($event)">
+```
+
+---
+###
+
+### *29.Angular jwt interceptor*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angJwtInterceptor
+```
+
+#### Code generate
+
+``` Typescript
+exclude: Array<string> = ['auth/login', 'auth/refresh'];
+constructor(
+    // private authService: AuthService,
+    private jwtService: JwtService,
+    private router: Router
+) { }
+
+intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+
+    if (this.exclude.filter(path => request.url.indexOf(path) > -1).length == 0) {
+        if (this.jwtService.getCookieToken("accessToken")) {
+            if (request.headers.has('Content-Type')) {
+                request = request.clone({
+                    headers: new HttpHeaders({
+                        'x-access-token': this.jwtService.getToken(),
+                        'Content-Type': request.headers.get('Content-Type'),
+                    })
+                });
+            }else{
+                request = request.clone({
+                    headers: new HttpHeaders({
+                        'x-access-token': this.jwtService.getToken(),
+                    })
+                });
+            }
+        }
+    }
+    return next.handle(request);
+}
+```
+
+---
+###
+
+### *30.Angular error interceptor*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angErrorInterceptor
+```
+
+#### Code generate
+
+``` Typescript
+constructor(
+    private router: Router,
+    private _jwt: JwtService,
+    private _auth: AuthService,
+) { }
+            
+intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    return next.handle(request).pipe(
+        retry(0),
+        catchError((error)=> {
+            
+            if(error.status == 401 ) {
+                if(this._jwt.getCookieToken("refreshToken")){
+                    let data = { refreshToken: this._jwt.refreshToken }
+            
+                        this._auth.refresh(data).subscribe(
+                            res =>{
+                                this.router.navigate(['/']);
+                            }, err =>{
+                                this._jwt.removeToken("accessToken");
+                            this._jwt.removeToken("refreshToken");
+                                this.router.navigate(['sign-in']);
+                            }
+                        );
+                }else{
+                    this.router.navigate(['sign-in']);
+                }
+            }else if(error.status == 403) {
+                this.router.navigate(['home']);
+            }
+            return throwError(error.error);
+        })
+    );
+}
+```
+
+---
+###
+
+### *31.Angular import module*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angImportModule
+```
+
+#### Code generate
+
+``` Typescript
+HttpClientModule,
+ReactiveFormsModule,
 ```
 
 ---

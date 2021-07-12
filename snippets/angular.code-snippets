@@ -367,7 +367,7 @@
         ],
         "description": "Angular routing common"
     },
-    "Route to component":{
+    "Route to component": {
         "prefix": "!angRouteComponent",
         "body": [
             "{",
@@ -377,7 +377,7 @@
         ],
         "description": "Angular route to component"
     },
-    "Route to module":{
+    "Route to module": {
         "prefix": "!angRouteModule",
         "body": [
             "{",
@@ -432,7 +432,7 @@
         "body": "{{${1:value}|${2:translate}}}",
         "description": "Angular pipe value"
     },
-    "Angular router link active":{
+    "Angular router link active": {
         "prefix": "!angRouteActive",
         "body": "routerLinkActive=\"${1:active}\""
     },
@@ -478,5 +478,88 @@
         "prefix": "!angPageTemplate",
         "body": "<app-pagination [paginationOption]=\"paginationOption\" (onPageChange)=\"handleChangePage($event) \">",
         "description": "Angular pagination component"
+    },
+    "Angular jwt interceptor": {
+        "prefix": "!angJwtInterceptor",
+        "body": [
+            "exclude: Array<string> = ['auth/login', 'auth/refresh'];",
+            "constructor(",
+            "  // private authService: AuthService,",
+            "  private jwtService: JwtService,",
+            "  private router: Router",
+            ") { }",
+            "",
+            "intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {",
+            "",
+            "   if (this.exclude.filter(path => request.url.indexOf(path) > -1).length == 0) {",
+            "       if (this.jwtService.getCookieToken(\"accessToken\")) {",
+            "           if (request.headers.has('Content-Type')) {",
+            "               request = request.clone({",
+            "                   headers: new HttpHeaders({",
+            "                       'x-access-token': this.jwtService.getToken(),",
+            "                       'Content-Type': request.headers.get('Content-Type'),",
+            "                   })",
+            "               });",
+            "           }else{",
+            "               request = request.clone({",
+            "                   headers: new HttpHeaders({",
+            "                       'x-access-token': this.jwtService.getToken(),",
+            "                   })",
+            "               });",
+            "           }",
+            "       }",
+            "   }",
+            "   return next.handle(request);",
+            "}",
+        ],
+        "description": "Angular jwt interceptor"
+    },
+    "Angular error interceptor": {
+        "prefix": "!angErrorInterceptor",
+        "body": [
+            "constructor(",
+            "   private router: Router,",
+            "   private _jwt: JwtService,",
+            "   private _auth: AuthService,",
+            ") { }",
+            "",
+            "intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {",
+            "   return next.handle(request).pipe(",
+            "       retry(0),",
+            "       catchError((error)=> {",
+            "",
+            "           if (error.status == 401 ) {",
+            "               if(this._jwt.getCookieToken(\"refreshToken\")){",
+            "                   let data = { refreshToken: this._jwt.refreshToken }",
+            "",
+            "                   this._auth.refresh(data).subscribe(",
+            "                       res =>{",
+            "                           this.router.navigate(['/']);",
+            "                       }, err =>{",
+            "                           this._jwt.removeToken(\"accessToken\");",
+            "                           this._jwt.removeToken(\"refreshToken\");",
+            "                           this.router.navigate(['sign-in']);",
+            "                       }",
+            "                   );",
+            "               }else{",
+            "                   this.router.navigate(['sign-in']);",
+            "               }",
+            "           }else if(error.status == 403) {",
+            "               this.router.navigate(['home']);",
+            "           }",
+            "           return throwError(error.error);",
+            "       })",
+            "   );",
+            "}",
+        ],
+        "description": "Angular error interceptor"
+    },
+    "Angular import module": {
+        "prefix": "!angImportModule",
+        "body": [
+            "HttpClientModule,",
+            "ReactiveFormsModule,"
+        ],
+        "description": "Angular import main module"
     }
 }
