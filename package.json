@@ -44,10 +44,8 @@
                 "path": "./snippets/bs4.code-snippets"
             },
             {
-
                 "language": "markdown",
-                "path": "./snippets/MyMd.code-snippets",
-
+                "path": "./snippets/MyMd.code-snippets"
             }
         ]
     }
