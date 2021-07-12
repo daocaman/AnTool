@@ -367,19 +367,39 @@
         ],
         "description": "Angular routing common"
     },
-    "angular ngFor": {
+    "Route to component":{
+        "prefix": "!angRouteComponent",
+        "body": [
+            "{",
+            "   path: '${1:path}',",
+            "   component: ${2:component}",
+            "}",
+        ],
+        "description": "Angular route to component"
+    },
+    "Route to module":{
+        "prefix": "!angRouteModule",
+        "body": [
+            "{",
+            "   path: '${1:path}',",
+            "   loadChildren: () => import('${2:module}').then(m => m.${3:module})",
+            "},",
+        ],
+        "description": "Angular routing to module (lazy load)"
+    },
+    "Angular ngFor": {
         "prefix": "!angNgFor",
         "body": "*ngFor=\"let ${1:item} of ${2:items}; index as ${3:i};\"",
         "description": "Angular ngFor"
     },
-    "angular ngIf": {
+    "Angular ngIf": {
         "prefix": "!angNgIf",
         "body": "*ngIf=\"${1:condition}\"",
         "description": "Angular ngIf"
     },
-    "angular ngClass": {
+    "Angular ngClass": {
         "prefix": "!angNgClass",
-        "body": "[ngClass]=\"{'${1:class1}': ${2:condition}, 'class2':  condition }\"",
+        "body": "[ngClass]=\"{'${1:class1}': ${2:condition}, '${3:class2}':  ${4:condition} }\"",
         "description": "Angular ngClass"
     },
     "angular ngStyle": {

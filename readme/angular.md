@@ -13,6 +13,11 @@
 |  10   | Angular form object           | [link](#10Angular-form-object)           |
 |  11   | Angular routing layout        | [link](#11Angular-route-layout)          |
 |  12   | Angular routing common        | [link](#12Angular-route-common)          |
+|  13   | Angular routing component     | [link](#13Angular-route-component)       |
+|  14   | Angular routing module        | [link](#14Angular-route-module)          |
+|  15   | Angular ngFor                 | [link](#15Angular-ngFor)                 |
+|  16   | Angular ngIf                  | [link](#16Angular-ngIf)                  |
+|  17   | Angular ngClass               | [link](#17Angular-ngClass)               |
 
 
 ### *1.Angular service*
@@ -560,6 +565,135 @@ const routes: Routes = [
         component: ${3:component2}
     }
 ]
+```
+
+---
+###
+
+### *13.Angular route component*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angRouteComponent
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description       |
+| :---: | --------------------- | ----------------- |
+|   1   | path                  | Path routing      |
+|   2   | component             | Component routing |
+
+#### Code generate
+
+``` Typescript
+{
+    path: '${1:path}',
+    component: ${2:component}
+}
+```
+
+---
+###
+
+### *14.Angular route module*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angRouteModule
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description      |
+| :---: | --------------------- | ---------------- |
+|   1   | path                  | Path to module   |
+|   2   | module                | Module to import |
+|   3   | module                | Module           |
+
+#### Code generate
+
+``` Typescript
+{
+    path: '${1:path}',
+    loadChildren: () => import('${2:module}').then(m => m.${3:module})
+},
+```
+
+---
+###
+
+### *15.Angular ngFor*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angNgFor
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description   |
+| :---: | --------------------- | ------------- |
+|   1   | item                  | Item in array |
+|   2   | items                 | Array         |
+|   3   | i                     | index         |
+
+#### Code generate
+
+``` Typescript
+*ngFor="let ${1:item} of ${2:items}; index as ${3:i};"
+```
+
+---
+###
+
+### *16.Angular ngIf*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angNgIf
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description |
+| :---: | --------------------- | ----------- |
+|   1   | condition             | Condition   |
+
+#### Code generate
+
+``` Typescript
+*ngIf="${1:condition}"
+```
+
+---
+###
+
+### *17.Angular ngClass*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angNgClass
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description         |
+| :---: | --------------------- | ------------------- |
+|   1   | class1                | Style class         |
+|   2   | condition             | Condition for class |
+|   3   | class2                | Style class         |
+|   4   | condition             | Condition for class |
+
+#### Code generate
+
+``` Typescript
+[ngClass]="{'${1:class1}': ${2:condition}, '${3:class2}':  ${4:condition} }"
 ```
 
 ---
