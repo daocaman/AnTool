@@ -561,5 +561,15 @@
             "ReactiveFormsModule,"
         ],
         "description": "Angular import main module"
+    },
+    "Angular @input var":{
+        "prefix": "!ang@Input",
+        "body": "@Input() ${1:var}: ${2:type};",
+        "description": "Angular @input"
+    },
+    "Angular @output var":{
+        "prefix": "!ang@Output",
+        "body": "@Output() ${1:var}: EventEmitter<any> = new EventEmitter();",
+        "description": "Angular @output"
     }
 }

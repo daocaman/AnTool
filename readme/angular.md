@@ -32,6 +32,8 @@
 |  29   | Angular jwt interceptor       | [link](#29Angular-jwt-interceptor)       |
 |  30   | Angular error interceptor     | [link](#30Angular-error-interceptor)     |
 |  31   | Angular import main module    | [link](#31Angular-import-module)         |
+|  32   | Angular input var             | [link](#32Angular-input-var)             |
+|  33   | Angular ouput var             | [link](#33Angular-output-var)            |
 
 
 ### *1.Angular service*
@@ -1082,6 +1084,53 @@ intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<un
 ``` Typescript
 HttpClientModule,
 ReactiveFormsModule,
+```
+
+---
+###
+
+### *32.Angular input var*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!ang@Input
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description            |
+| :---: | --------------------- | ---------------------- |
+|   1   | var                   | Variable input         |
+|   2   | type                  | Type of input variable |
+
+#### Code generate
+
+``` Typescript
+@Input() ${1:var}: ${2:type};
+```
+
+---
+###
+
+### *33.Angular output var*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!ang@Output
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description        |
+| :---: | --------------------- | ------------------ |
+|   1   | var                   | Variable of output |
+
+#### Code generate
+
+``` Typescript
+@Output() ${1:var}: EventEmitter<any> = new EventEmitter();
 ```
 
 ---
