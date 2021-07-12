@@ -14,6 +14,8 @@
     "categories": [
         "Snippets"
     ],
+    "main": "./snippets",
+    "homepage": "./README.md",
     "contributes": {
         "snippets": [{
                 "language": "javascript",
