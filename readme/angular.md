@@ -11,6 +11,8 @@
 |   8   | Angular Modal Component       | [link](#8Angular-modal-component)        |
 |   9   | Angular service function      | [link](#9Angular-service-function)       |
 |  10   | Angular form object           | [link](#10Angular-form-object)           |
+|  11   | Angular routing layout        | [link](#11Angular-route-layout)          |
+|  12   | Angular routing common        | [link](#12Angular-route-common)          |
 
 
 ### *1.Angular service*
@@ -462,14 +464,103 @@ ${1:functcionname}($2}) {
 |   1   | nameForm               | Form variable      |
 |   2   | control1               | Form control field |
 |   3   | ( ,'')                 | Default value      |
-|   4   | ( ,Validator.required) | Validator          |
+|   4   | ( ,Validator.required) | Validators field   |
 
 #### Code generate
 
 ``` Typescript
 ${1:nameForm}: FormGroup = new FormGroup({
-    ${2:control1}: new FormControl(${3| ,''|},${4| ,Validator.required|}),
+    ${2:control1}: new FormControl(${3| ,''|},${4| ,Validators.required|}),
 });
 ```
+---
+###
+
+### *11.Angular route layout*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angRouteLayout
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description                          |
+| :---: | --------------------- | ------------------------------------ |
+|   1   | component1            | Component view layout                |
+|   2   | component2            | Child component layout               |
+|   3   | path1                 | Path routing for child layout        |
+|   4   | path2                 | Path routing for child module layout |
+|   5   | module                | Path to module                       |
+|   6   | module                | Module to import                     |
+
+#### Code generate
+
+``` Typescript
+import { RouterModule, Routes } from '@angular/router';
+const routes: Routes = [
+    {
+        path: '',
+        component: ${1:component1},
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                component: ${2:component2}
+            },
+            {
+                path: '${3:path1}',
+                component: ${2:component2}
+            },
+            {
+                path: '${4:path2}',
+                loadChildren: () => import('${5:module}').then(m => m.${6:module})
+            },
+            {
+                path: '**',
+                redirectTo: '${3:path1}'
+            }
+        ]
+    }
+]
+```
+
+---
+###
+
+### *12.Angular route common*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!angRouteCommon
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description        |
+| :---: | --------------------- | ------------------ |
+|   1   | component1            | Component 1 layout |
+|   2   | path1                 | Path rout child    |
+|   3   | component2            | Component 2        |
+
+
+#### Code generate
+
+``` Typescript
+import { RouterModule, Routes } from '@angular/router';
+const routes: Routes = [
+    {
+        path: '',
+        component: ${1:component1}
+    },
+    {
+        path: '${2:path1}',
+        component: ${3:component2}
+    }
+]
+```
+
 ---
 ###
