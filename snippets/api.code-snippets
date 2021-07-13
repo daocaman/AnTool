@@ -315,8 +315,21 @@
     },
     "Express promise all":{
         "prefix": "!expPromiseAll",
+        "body": "[${1:var1}, ${2:var2}] = await Promise.all([${1:var1}, ${2:var2}])",
+        "description": "Express promise all"
+    },
+    "Express if-else one line":{
+        "prefix": "!expIfLine",
+        "body": "${1:var} = (${2:condition}) ? ${3:var1} : ${4:var2};",
+        "description": "Express if-else one line"
+    },
+    "Express if attribue":{
+        "prefix": "!expIfAttr",
         "body": [
-            
-        ]
+            "if (${1:object} && ${1:object}.${2:field} == null) {",
+            "$3",
+            "}",
+        ],
+        "description": "Express if attribute"
     }
 }

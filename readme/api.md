@@ -26,6 +26,8 @@
 |  23   | Express multer              | [link](#23Express-multer)              |
 |  24   | Express install             | [link](#24Express-install)             |
 |  25   | Express copy object         | [link](#25Express-copy-object)         |
+|  26   | Express promise all         | [link](#26Express-promise-all)         |
+|  27   | Express if-else line        | [link](#27Express-if-else-line)        |
 
 
 ### *1.Express server.js*
@@ -729,6 +731,83 @@ npm i dotenv
 
 ``` Javascript
 let ${1:data} = Object.assign({},${2:data1});
+```
+
+---
+###
+
+### *26.Express promise all*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!expPromiseAll
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description   |
+| :---: | --------------------- | ------------- |
+|   1   | var1                  | Var promise 1 |
+|   2   | var2                  | Var promise 2 |
+
+#### Code generate
+
+``` Javascript
+[${1:var1}, ${2:var2}] = await Promise.all([${1:var1}, ${2:var2}]);
+```
+
+---
+###
+
+### *27.Express if-else line*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!expIfline
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description                     |
+| :---: | --------------------- | ------------------------------- |
+|   1   | var                   | Variable assign                 |
+|   2   | condition             | Condition                       |
+|   3   | var1                  | Variable assign condition true  |
+|   4   | var2                  | Variable assign condition false |
+
+#### Code generate
+
+``` Javascript
+${1:var} = (${2:condition}) ? ${3:var1} : ${4:var2};
+```
+
+---
+###
+
+### *28.Express if attribute*
+[menu](#Table-snippets)
+
+#### Prefix
+```
+!expIfAttr
+```
+
+#### Table variables
+
+|  STT  | Default / Choose type | Description              |
+| :---: | --------------------- | ------------------------ |
+|   1   | object                | Object check             |
+|   2   | field                 | Field of object to check |
+|   3   |                       | Place to code            |
+
+#### Code generate
+
+``` Javascript
+if (${1:object} && ${1:object}.${2:field} == null) {
+    $3
+}
 ```
 
 ---
