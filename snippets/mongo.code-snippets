@@ -1,6 +1,6 @@
 {
-    "mongoose db setup": {
-        "prefix": "!expMongooseConfig.js",
+    "Mongo db setup": {
+        "prefix": "!mongoConfig.js",
         "body": [
             "const mongoose = require('mongoose');",
             "const dbConfig = require('./dbConfig');",
@@ -8,17 +8,28 @@
             "link_db = link_db.replace(\"{username}\", dbConfig.user_db);",
             "link_db = link_db.replace(\"{password}\", dbConfig.password);",
             "link_db = link_db.replace(\"{database}\", dbConfig.database_name);",
-            "mongoose.connect(link_db)",
-            ".then(() => {",
-            "    console.log('Database connected');",
-            "})",
-            " .catch((error) => {",
-            " console.log('Error connecting to database');",
+            "mongoose.connect(link_db, {",
+            "    useNewUrlParser: true,",
+            "    useUnifiedTopology: true,",
+            "    useFindAndModify: false,",
+            "    useCreateIndex: true",
+            "}, async (err) => {",
+            "    if (err) {",
+            "        console.log(err)",
+            "    } else {",
+            "        console.log('Connect database successfully!')",
+            "    }",
             "});",
-        ]
+            "// console.log(mongoose.connection)",
+            "mongoose.Promise = global.Promise;",
+            "var db = mongoose.connection;",
+            "// console.log(db)",
+            "db.on('error', console.error.bind(console, 'MongoDB connection error:'));",
+        ],
+        "description": "Mongo db setup"
     },
-    "mongoose db model": {
-        "prefix": "!expMongModel",
+    "Mongo model": {
+        "prefix": "!mongoModel",
         "body": [
             "const mongoose = require('mongoose');",
             "",
@@ -32,36 +43,71 @@
             "const ${5:model} = mongoose.model('user', ${1:schemaName});",
             "",
             "module.exports = ${5:model};"
-        ]
+        ],
+        "description": "Mongo model"
     },
-    "mongoose db field":{
-        "prefix": "!expMongModelField",
+    "Mongo model field": {
+        "prefix": "!mongoModelField",
         "body": [
-            "${1:attribute}: { type: ${2|String,Date,Number,Boolean,Array|} , ${3|required:true, |} },",
-        ]
+            "${1:attribute}: { type: ${2|String,Date,Number,Boolean,Array|} , ${3| ,required:true|} },",
+        ],
+        "description": "Mongo model field"
     },
-
-    "mongoose db find":{
-        "prefix": "!expMongFind",
-        "body": "await ${1:MyModel}.find(${2| ,{}|}, ${3|null,'attr1 attr2' |}, ${4| ,{ skip: 10 , limit: 10}|}).exec();"
+    "Mongo db find": {
+        "prefix": "!mongoFind",
+        "body": "await ${1:model}.find(${2| ,{}|}, ${3| ,'-attr1 -attr2', ex_attr |}, ${4| ,{ skip: 10 , limit: 10}|}).exec();",
+        "description": "Mongo db finding"
     },
-
-    "mongoose db findOne":{
-        "prefix": "!expMongFindOne",
-        "body": "await ${1:MyModel}.findOne(${2|{}, |}, ${3|null,'attr1 attr2' |}).exec();"
+    "Mongo db findOne": {
+        "prefix": "!mongoFindOne",
+        "body": "await ${1:model}.findOne(${2| ,{}|}, ${3| ,'-attr1 -attr2', ex_attr |}).exec();",
+        "description": "Mongo db find one"
     },
-
-    "mongoose db findById":{
-        "prefix": "!expMongFindById",
-        "body": "await ${1:MyModel}.findById(${2:id}, ${3|null,'attr1 attr2' |}).exec();"
+    "Mongo db findById": {
+        "prefix": "!mongoFindById",
+        "body": "await ${1:model}.findById(${2:id}, ${3| ,'-attr1 -attr2', ex_attr |}).exec();",
+        "description": "Mongo db find by id"
     },
-
-    "mongoose db create":{
-        "prefix": "!expMongCreate",
-        "body": "await ${1:Model}.create(${2| ,{ },[]|});"
+    "Mongo db create": {
+        "prefix": "!mongoCreate",
+        "body": "await ${1:Model}.create(${2| ,{ },[]|});",
+        "description": "Mongo db create"
+    },
+    "Mongo db exclude":{
+        "prefix": "!mongoExclude",
+        "body": "let ex_attr = '-__v -created_at -updated_at';",
+        "description": "Mongo db exclude field"
+    },
+    "Mongo db ref":{
+        "prefix": "!mongoRefField",
+        "body": [
+            "{",
+            "    type: Schema.Types.ObjectId,",
+            "    ref: '${1:table}'",
+            "},",
+        ],
+        "description": "Mongo model ref field"
+    },
+    "Mongo db regExp":{
+        "prefix": "!mongoRegExp",
+        "body": "{ $regex: $1 }",
+        "description": "Mongo db regular exception"
+    },
+    "Mongo db populate line":{
+        "prefix": "!mongoPopulateLine",
+        "body": ".populate('${1:attribute}', ex_attr )",
+        "description": "Mongo db populate line"
+    },
+    "Mongo db populate obj":{
+        "prefix": "!mongoPopulteObj",
+        "body": [
+            "{",
+            "    path: '${1:path1}',",
+            "    populate: { path: '${2:path2}', select: ex_attr },",
+            "    select: ex_attr ",
+            "}",
+        ],
+        "description": "Mongo db populate obj"
     }
-
-
-
 
 }
