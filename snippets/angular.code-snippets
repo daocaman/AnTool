@@ -303,7 +303,7 @@
     "Service function": {
         "prefix": "!angServiceFnct",
         "body": [
-            "${1:functcionname}($2}) {",
+            "${1:functcionname}($2) {",
             "   return this._api.${3|get,delete,post,put,file|}(this.path, this.endpoints.${4:name}$5);",
             "}"
         ],
