@@ -1,0 +1,140 @@
+{
+    "Full row": {
+        "prefix": "!ttbRow",
+        "body": [
+            "{",
+            "    'title_1': ${1|str_common[],''|}, 'head_1': ${2|'*','-','+',''|},",
+            "    'title_2': '', 'head_2': ${3|'*','-','+',''|},",
+            "    'title_3': '', 'head_3': ${4|'*','-','+',''|},",
+            "    'start_time': $5, 'period': $6,",
+            "    'pos': ${7|-1,99,idx_common[]|}, 'in_charge': ${8|'',in_charge_common[]|},",
+            "    'place': ${9|'',place_common[]|}, 'extra': ${10|'',extra_common|}",
+            "},",
+        ],
+        "description": "Tiến trình biểu full row"
+    },
+    "One bold row": {
+        "prefix": "!ttbOneBold",
+        "body": [
+            "{'title_1': ${1|str_common[],''|}, 'head_1': ${2|'*','-','+',''|},},",
+        ],
+        "description": "row one bold"
+    },
+    "One normal row": {
+        "prefix": "!ttbOne",
+        "body": [
+            "{ 'title_3': ${1|str_common[],''|}, 'head_3': ${2|'*','-','+',''|}, },",
+        ],
+        "description": "normal row"
+    },
+    "Two bold row": {
+        "prefix": "!ttbTwoBold",
+        "body": [
+            "{",
+            "    'title_1': ${1|str_common[],''|}, 'head_1': ${2|'*','-','+',''|},",
+            "    'title_2': '', 'head_2': ${3|'*','-','+',''|},",
+            "},",
+        ],
+        "description": "row with two title"
+    },
+    "Two normal row": {
+        "prefix": "!ttbTwo",
+        "body": [
+            "{",
+            "    'title_1': ${1|str_common[],''|}, 'head_1': ${2|'*','-','+',''|},",
+            "    'title_3': '', 'head_3': ${3|'*','-','+',''|},",
+            "},",
+        ],
+        "description": "row with one title one normal"
+    },
+    "Time": {
+        "prefix": "!ttbTime",
+        "body": [
+            "    'start_time': $1, 'period': $2,",
+            "    'pos': ${7|-1,99,idx_common[]|}, 'in_charge': ${8|'',in_charge_common[]|},",
+            "    'place': ${9|'',place_common[]|}, 'extra': ${10|'',extra_common|}",
+        ],
+        "description": "add time"
+    },
+    "TimePTBK": {
+        "prefix": "!ttbTimePtBK",
+        "body": [
+            "    'start_time': $1, 'period': $2,",
+            "    'pos': idx_common['pt'], 'in_charge': in_charge_common['b'],",
+            "    'place': place_common['td'], 'extra': extra_common+', pháo và tranh vẽ'",
+        ],
+        "description": "add time"
+    },
+    "TimePTTT": {
+        "prefix": "!ttbTimePtTT",
+        "body": [
+            "    'start_time': $1, 'period': $2,",
+            "    'pos': idx_common['pt'], 'in_charge': in_charge_common['b'],",
+            "    'place': place_common['td'], 'extra': extra_common+', pháo và đồng bộ kèm theo'",
+        ],
+        "description": "add time"
+    },
+    "TimeTS": {
+        "prefix": "!ttbTimeTs",
+        "body": [
+            "    'start_time': $1, 'period': $2,",
+            "    'pos': idx_common['ts'], 'in_charge': in_charge_common['c'],",
+            "    'place': place_common['td'], 'extra': extra_common+', ' $3",
+        ],
+        "description": "add time"
+    },
+    "TimeDX": {
+        "prefix": "!ttbTimeDx",
+        "body": [
+            "    'start_time': $1, 'period': $2,",
+            "    'pos': idx_common['dx'], 'in_charge': in_charge_common['c'],",
+            "    'place': place_common['td'], 'extra': extra_common+', MĐX'",
+        ],
+        "description": "add time"
+    },
+    "TimeTT": {
+        "prefix": "!ttbTimeTt",
+        "body": [
+            "    'start_time': $1, 'period': $2,",
+            "    'pos': idx_common['tt'], 'in_charge': in_charge_common['bCH'],",
+            "    'place': place_common['bCH'], 'extra': extra_common+', '$3",
+        ],
+        "description": "add time"
+    },
+    "Chuyên ngành":{
+        "prefix": "!ttbCN",
+        "body": [
+            "{'title_1': str_common['c_n'], 'head_1': '', },",
+            "{'title_1': str_common['hl_pt'], 'head_1': '', },",
+            "{'title_1': str_common['hl_tt'], 'head_1': '', },",
+            "{'title_1': str_common['hl_tt_vtd'], 'head_1': '', },",
+            "{'title_1': str_common['hl_tt_htd'], 'head_1': '', },",
+            "{'title_1': str_common['hl_ts'], 'head_1': '', },",
+            "{'title_1': str_common['hl_dx'], 'head_1': '', },",
+        ],
+        "description": "generate cn"
+    },
+    "Hội thao":{
+        "prefix": "!ttbHT",
+        "body": [
+            "{'title_1': str_common['ht'], 'head_1': '', },",
+            "{'title_1': str_common['pt'], 'head_1': '', },",
+            "{'title_1': str_common['tt'], 'head_1': '', },",
+            "{'title_1': str_common['ts'], 'head_1': '', },",
+            "{'title_1': str_common['dx'], 'head_1': '', },",
+        ],
+        "description": "generate ht"
+    },
+    "Chào cờ":{
+        "prefix": "!ttbCC",
+        "body": [
+            "{",
+            "    'title_3': 'Chào cờ, duyệt đội ngũ, thông báo chính trị tuần', 'head_3': '-',",
+            "    'start_time': 7, 'period': 1,",
+            "    'pos': idx_common['c'], 'in_charge': in_charge_common['d'],",
+            "    'place': place_common['sb'], 'extra': 'Trang phục quy định'",
+            "},",
+        ],
+        "description": "generate ht"
+    }
+}

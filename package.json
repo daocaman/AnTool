@@ -46,6 +46,10 @@
             {
                 "language": "markdown",
                 "path": "./snippets/MyMd.code-snippets"
+            },
+            {
+                "language": "python",
+                "path": "./snippets/ttb.code-snippets"
             }
         ]
     }
